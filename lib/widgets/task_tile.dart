@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 class TaskTile extends StatelessWidget {
   const TaskTile({
     Key? key,
@@ -9,7 +8,27 @@ class TaskTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text('Bake the Cake'),
-      trailing: Checkbox(value: false, onChanged: (bool? value) {  },),
+      trailing: Taskcheckbox(),
     );
+  }
+}
+
+class Taskcheckbox extends StatefulWidget {
+  @override
+  State<Taskcheckbox> createState() => _TaskcheckboxState();
+}
+
+class _TaskcheckboxState extends State<Taskcheckbox> {
+  bool ischecked=false;
+  @override
+  Widget build(BuildContext context) {
+    return Checkbox(
+    value: ischecked,
+    activeColor: Colors.lightBlueAccent,
+     onChanged: (newValue) {
+      setState(() {
+        ischecked=newValue!;
+      });
+       },);
   }
 }

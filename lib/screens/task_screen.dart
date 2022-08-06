@@ -5,7 +5,6 @@ import 'package:todoey/widgets/task_list.dart';
 import 'package:todoey/widgets/task_tile.dart';
 import 'package:todoey/widgets/bottom_sheet.dart';
 class TaskScreen extends StatelessWidget {
-bool ischecked=false;
 
   @override
   Widget build(BuildContext context) {
