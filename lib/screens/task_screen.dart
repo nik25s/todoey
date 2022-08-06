@@ -1,16 +1,23 @@
+
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:todoey/widgets/task_list.dart';
 import 'package:todoey/widgets/task_tile.dart';
+import 'package:todoey/widgets/bottom_sheet.dart';
 class TaskScreen extends StatelessWidget {
 bool ischecked=false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton:FloatingActionButton(
         backgroundColor: Colors.lightBlueAccent,
-        onPressed: (() {}),
+        onPressed: (() {
+          showModalBottomSheet<void>(
+            context: context,
+            builder: buildbottomsheet );
+        }),
         child: Icon(Icons.add),
       ),
       body:Column(
