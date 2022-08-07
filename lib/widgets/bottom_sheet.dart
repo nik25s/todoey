@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
-
-Widget buildbottomsheet(BuildContext context) => Container(
+class bottomsheet extends StatelessWidget {
+    late String newtasktitle;
+    final Function newtasktitlecallback;
+    bottomsheet(this.newtasktitlecallback);
+  
+  @override
+  Widget build(BuildContext context) {
+    return Container(
       color: Color(0xff757575),
       child: Container(
         padding: EdgeInsets.all(22),
@@ -20,6 +26,9 @@ Widget buildbottomsheet(BuildContext context) => Container(
                 fontSize: 30),
           ),
           TextField(
+            onChanged: (newText){
+              newtasktitle=newText;
+            },
             autofocus: true,
             textAlign: TextAlign.center,
             decoration: InputDecoration(
@@ -30,10 +39,15 @@ Widget buildbottomsheet(BuildContext context) => Container(
           ),
           SizedBox(height:17),
           FlatButton(
-            onPressed: (){},
+            onPressed: (){
+               newtasktitlecallback(newtasktitle);
+            },
             color: Colors.lightBlueAccent,
             child: Text('Add',style:TextStyle(color: Colors.white),),
             )
         ]),
       ),
     );
+
+  }
+}

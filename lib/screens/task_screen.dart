@@ -4,8 +4,19 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:todoey/widgets/task_list.dart';
 import 'package:todoey/widgets/task_tile.dart';
 import 'package:todoey/widgets/bottom_sheet.dart';
-class TaskScreen extends StatelessWidget {
+import 'package:todoey/models/task.dart';
+class TaskScreen extends StatefulWidget {
 
+  @override
+  State<TaskScreen> createState() => _TaskScreenState();
+}
+
+class _TaskScreenState extends State<TaskScreen> {
+   List<Task> tasks = [
+    Task(name: 'buy foods'),
+    Task(name: 'buy books'),
+    Task(name: 'buy grocery'),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +26,15 @@ class TaskScreen extends StatelessWidget {
         onPressed: (() {
           showModalBottomSheet<void>(
             context: context,
-            builder: buildbottomsheet );
+            builder: (context)=>bottomsheet(
+              (newtasktitle){
+                setState(() {
+                tasks.add(Task(name: newtasktitle));
+                });
+                Navigator.pop(context);
+            },
+            ),
+             );
         }),
         child: Icon(Icons.add),
       ),
@@ -44,7 +63,7 @@ class TaskScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.white,fontWeight:FontWeight.w700,fontSize: 50),
                 ),
                 Text(
-                  '12 Tasks',
+                  '${tasks.length} Tasks',
                   style: TextStyle(color: Colors.white,fontSize: 18),
                 ),
                
@@ -59,7 +78,7 @@ class TaskScreen extends StatelessWidget {
                       
                       borderRadius:BorderRadius.only(topLeft:Radius.circular(20),topRight: Radius.circular(20)),
                       ),
-                      child: TaskList(),
+                      child: TaskList(tasks),
                   ),
                 ),
         ],
