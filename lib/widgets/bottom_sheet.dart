@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoey/models/task.dart';
+
+import '../models/task_data.dart';
 class bottomsheet extends StatelessWidget {
     late String newtasktitle;
-    final Function newtasktitlecallback;
-    bottomsheet(this.newtasktitlecallback);
+
   
   @override
   Widget build(BuildContext context) {
@@ -40,7 +43,8 @@ class bottomsheet extends StatelessWidget {
           SizedBox(height:17),
           FlatButton(
             onPressed: (){
-               newtasktitlecallback(newtasktitle);
+               Provider.of<TaskData>(context,listen: false).addtask(newtasktitle);
+               Navigator.pop(context);
             },
             color: Colors.lightBlueAccent,
             child: Text('Add',style:TextStyle(color: Colors.white),),

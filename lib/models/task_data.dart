@@ -11,4 +11,10 @@ import 'package:todoey/models/task.dart';
   int get taskcount{
     return tasks.length;
   }
+
+  void addtask(String newtasktitle){
+    final task=Task(name: newtasktitle);
+    tasks.add(task);
+    notifyListeners();
+  }
  }
