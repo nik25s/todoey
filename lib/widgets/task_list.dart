@@ -14,9 +14,10 @@ class TaskList extends StatelessWidget {
               isChecked: taskdata.tasks[index].isDone,//here taskdata=Provider.of<TaskData>(context) by the help of consumer we made this name short as a taskdata by consumer widget
               textTitle: taskdata.tasks[index].name,
               checkboxCallback: () {
-                // setState(() { 
-                //   widget.tasks[index].toggleDone();
-                // });
+               taskdata.updatetask(taskdata.tasks[index]);
+              },
+              longpresscallback: (){
+                taskdata.deletetask(taskdata.tasks[index]);
               },
               );
         },
