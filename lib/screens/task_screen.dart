@@ -4,19 +4,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:todoey/widgets/task_list.dart';
 import 'package:todoey/widgets/task_tile.dart';
 import 'package:todoey/widgets/bottom_sheet.dart';
-import 'package:todoey/models/task.dart';
-class TaskScreen extends StatefulWidget {
+import 'package:provider/provider.dart';
+import 'package:todoey/models/task_data.dart';
+class TaskScreen extends StatelessWidget {
 
-  @override
-  State<TaskScreen> createState() => _TaskScreenState();
-}
-
-class _TaskScreenState extends State<TaskScreen> {
-   List<Task> tasks = [
-    Task(name: 'buy foods'),
-    Task(name: 'buy books'),
-    Task(name: 'buy grocery'),
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,9 +19,9 @@ class _TaskScreenState extends State<TaskScreen> {
             context: context,
             builder: (context)=>bottomsheet(
               (newtasktitle){
-                setState(() {
-                tasks.add(Task(name: newtasktitle));
-                });
+                // setState(() {
+                // tasks.add(Task(name: newtasktitle));
+                // });
                 Navigator.pop(context);
             },
             ),
@@ -63,7 +54,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   style: TextStyle(color: Colors.white,fontWeight:FontWeight.w700,fontSize: 50),
                 ),
                 Text(
-                  '${tasks.length} Tasks',
+                  '${Provider.of<TaskData>(context).tasks.length} Tasks',
                   style: TextStyle(color: Colors.white,fontSize: 18),
                 ),
                
@@ -78,7 +69,7 @@ class _TaskScreenState extends State<TaskScreen> {
                       
                       borderRadius:BorderRadius.only(topLeft:Radius.circular(20),topRight: Radius.circular(20)),
                       ),
-                      child: TaskList(tasks),
+                      child: TaskList(),
                   ),
                 ),
         ],
