@@ -11,8 +11,8 @@ class TaskList extends StatelessWidget {
         return ListView.builder(
         itemBuilder: (context, index) {
           return TaskTile(
-              isChecked: Provider.of<TaskData>(context).tasks[index].isDone,
-              textTitle: Provider.of<TaskData>(context).tasks[index].name,
+              isChecked: taskdata.tasks[index].isDone,//here taskdata=Provider.of<TaskData>(context) by the help of consumer we made this name short as a taskdata by consumer widget
+              textTitle: taskdata.tasks[index].name,
               checkboxCallback: () {
                 // setState(() { 
                 //   widget.tasks[index].toggleDone();
@@ -20,7 +20,7 @@ class TaskList extends StatelessWidget {
               },
               );
         },
-        itemCount: Provider.of<TaskData>(context).tasks.length,
+        itemCount: taskdata.taskcount,
       );
       }
      

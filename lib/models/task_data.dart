@@ -7,4 +7,8 @@ import 'package:todoey/models/task.dart';
     Task(name: 'buy books'),
     Task(name: 'buy grocery'),
   ];
+
+  int get taskcount{
+    return tasks.length;
+  }
  }
